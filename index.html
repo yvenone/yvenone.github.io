@@ -19,100 +19,76 @@
 			align-items: center;
 			padding: 20px;
 		}
-		table {
-			border-collapse: collapse;
-			margin: 20px 0;
-			border: 1px solid #ddd;
-			max-width: 800px;
+		.table-responsive {
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+			max-width: 100%;
+		}
+		.table {
 			width: 100%;
-			background-color: #333;
+			margin-bottom: 1rem;
 			color: #fff;
+			border-collapse: collapse;
 		}
-		th, td {
-			padding: 8px;
+		.table td,
+		.table th {
+			padding: .75rem;
+			vertical-align: top;
+			border-top: 1px solid #dee2e6;
 			text-align: left;
-			border-bottom: 1px solid #ddd;
 		}
-		th {
-			background-color: #222;
+		.table th {
 			font-weight: bold;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-			font-size: 12px;
-		}
-		tr:nth-child(even) {
-			background-color: #444;
-		}
-		a {
-			color: #4285f4;
-			text-decoration: none;
-			display: block;
-			padding: 8px;
-		}
-		a:hover {
-			background-color: #4285f4;
+			background-color: #343a40;
 			color: #fff;
+			border-color: #454d55;
+		}
+		.table tbody tr:nth-of-type(odd) {
+			background-color: rgba(255, 255, 255, 0.05);
+		}
+		.table tbody tr:hover {
+			background-color: rgba(255, 255, 255, 0.075);
 		}
 		.icon {
 			margin-right: 5px;
-		}
-		h1 {
-			font-size: 32px;
-			font-weight: bold;
-			margin-bottom: 20px;
-			text-align: center;
-		}
-		p {
-			font-size: 18px;
-			margin-bottom: 50px;
-			text-align: center;
-		}
-		@media only screen and (min-width: 768px) {
-			body {
-				font-size: 18px;
-			}
-			h1 {
-				font-size: 48px;
-			}
-			p {
-				font-size: 24px;
-			}
 		}
 	</style>
 </head>
 <body>
 	<div class="container">
-		<p>Private Download Links Repositories</p>
-		<table>
-			<thead>
-				<tr>
-					<th><i class="fas fa-file"></i> File Name</th>
-					<th><i class="fas fa-code-branch"></i> Version</th>
-					<th><i class="fas fa-info-circle"></i> Description</th>
-					<th><i class="fas fa-download"></i> Download Link</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>adminer-4.8.1.php</td>
-					<td>4.8.1</td>
-					<td>Database management tool</td>
-					<td><a href="https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php"><i class="fas fa-download icon"></i> Download</a></td>
-				</tr>
-				<tr>
-					<td>testmail.php</td>
-					<td>N/A</td>
-					<td>Simple WebTester [Test mail() , SSL , and Deceptive]</td>
-					<td><a href="https://yvenone.github.io/php/testmail.php"><i class="fas fa-download icon"></i> Download</a></td>
-				</tr>
-				<tr>
-					<td>redirect.html</td>
-					<td>N/A</td>
-					<td>HTML Redirector</td>
-					<td><a href="https://yvenone.github.io/redirect.html"><i class="fas fa-download icon"></i> Download</a></td>
-</tr>
-</tbody>
-</table>
-</div>
+		<h1>Private Download Links</h1>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>File Name</th>
+						<th>Version</th>
+						<th>Description</th>
+						<th><i class="fas fa-download"></i> Download Link</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>adminer-4.8.1.php</td>
+						<td>4.8.1</td>
+						<td>Database management tool</td>
+						<td><a href="https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php"><i class="fas fa-download icon"></i> Download</a></td>
+					</tr>
+					<tr>
+						<td>testmail.php</td>
+						<td>N/A</td>
+						<td>Simple WebTester [Test mail() , SSL , and Deceptive]</td>
+						<td><a href="https://yvenone.github.io/php/testmail.php"><i class="fas fa-download icon"></i> Download</a></td>
+					</tr>
+					<tr>
+						<td>redirect.html</td>
+						<td>N/A</td>
+						<td>HTML Redirector</td>
+						<td><a href="https://yvenone.github.io/redirect.html"><i class="fas fa-download icon"></i> Download</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </body>
 </html>
