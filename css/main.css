@@ -9,7 +9,7 @@ html {
   margin-left: 1em;
   margin-right: 1em;
   margin-top: -1.5em;
-  background: #555555!important; /* Grey background */
+  background: #000000!important; /* Black background */
   font-family: Courier;
 }
 
@@ -20,19 +20,19 @@ html {
 .y {
   font-family: i;
   font-size: calc(2.3em + 2.3vw);
-  color: #333333; /* Dark grey text */
+  color: #181818; /* Dark gray text */
 }
 
 .y:hover {
-  color: #ffffff;
+  color: #fff;
 }
 
 .w {
-  color: #ffffff;
+  color: #fff;
 }
 
 .b {
-  color: #000000;
+  color: #0000ff; /* Blue text */
 }
 
 .q {
@@ -59,9 +59,9 @@ input[type=file] {
 }
 
 input[type=submit] {
-  border: 1px solid #333333;
+  border: 1px solid #181818;
   padding: .2em;
-  background: 0 0;
+  background: #0000ff; /* Blue background */
 }
 
 td {
@@ -70,8 +70,8 @@ td {
 
 th {
   font-weight: 400;
-  border-bottom: thin solid #333333;
-  color: #ffffff;
+  border-bottom: thin solid #181818;
+  color: #fff;
 }
 
 .et {
@@ -80,13 +80,13 @@ th {
 }
 
 .r:hover {
-  background: #444444; /* Slightly darker grey on hover */
+  background: #00ff00; /* Green background on hover */
 }
 
 .l {
-  border: 1px solid #333333;
+  border: 1px solid #181818;
   padding: 1px;
-  background: 0 0;
+  background: #ff0000; /* Red background */
 }
 
 footer {
@@ -97,7 +97,7 @@ footer {
 }
 
 footer:hover {
-  color: #ffffff;
+  color: #fff;
 }
 
 a {
@@ -106,7 +106,7 @@ a {
 }
 
 a:hover {
-  color: #ffffff;
+  color: #fff;
 }
 
 .m {
@@ -114,7 +114,7 @@ a:hover {
 }
 
 textarea {
-  background: #ffffff;
+  background: #000000;
   border: none;
   width: 70%;
   height: 30em;
@@ -123,10 +123,9 @@ textarea {
 }
 
 textarea.o {
-  background: #f0f0f0; /* Lighter grey background */
+  background: #0000ff; /* Blue background */
 }
 
 .h {
   color: #ea2027;
 }
-
