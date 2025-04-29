@@ -2,150 +2,461 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Private Tools Collection">
-    <title>Private Tools Collection</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ToolHub | Neo-Brutalist Developer Utilities">
+    <title>ToolHub | Neo-Brutalist</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Plus Jakarta Sans for bold headings, Inter for clean body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRWFwSGwJ5jEcLvE5sC5hV2XLK5WOGj8BF4mI5klt" crossorigin="anonymous">
-    
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ZOtCEhrnuJ9aRxI9/7Unf+F6AEKc6vwhbWZQpldQZf+eX9F0BR5K6+y7HA4Jl0Io" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
+        :root {
+            /* Neo-Brutalist Palette & Style */
+            --bg-main: #f1f1f1; /* Off-white background */
+            --text-main: #111111; /* Black text */
+            --border-main: #111111; /* Black border */
+            --border-thickness: 2px;
+            --shadow-offset: 5px;
+            --shadow-color: var(--border-main);
+            --base-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--shadow-color);
+            --base-border-radius: 0px; /* Sharp corners */
+            --interactive-border-radius: 4px; /* Slight roundness for buttons/tags */
+
+            /* Bright Solid Accent Palette */
+            --accent-blue: #00f0ff; /* Cyan */
+            --accent-pink: #ff00ff; /* Magenta */
+            --accent-yellow: #ffff00; /* Yellow */
+            --accent-green: #00ff00; /* Lime Green */
+            --accent-purple: #9d00ff; /* Purple */
+            --accent-orange: #ff9900; /* Orange */
+
+            --transition-fast: all 0.15s ease-out;
+        }
+
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 100%; /* 16px default */
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #222;
-            color: #fff;
-            font-family: 'Roboto', sans-serif;
-            font-size: 16px;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
+            padding: 2rem 1rem;
+            overflow-x: hidden;
+             -webkit-font-smoothing: antialiased;
+             -moz-osx-font-smoothing: grayscale;
         }
-        h1 {
-            font-weight: 700;
-            margin-bottom: 20px;
+
+        /* Remove previous background shapes */
+
+        /* Main container */
+        .container {
+            max-width: 1100px;
+            margin: 1rem auto;
+            padding: 0; /* Padding handled by inner sections */
+        }
+
+        /* Header */
+        header {
             text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            border: var(--border-thickness) solid var(--border-main);
+            box-shadow: var(--base-shadow);
+            background-color: var(--bg-main); /* Ensure bg */
+            border-radius: var(--base-border-radius);
         }
-        .table-responsive {
-            margin-top: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+        h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 3.8rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            line-height: 1.1;
+             /* Simple hard shadow for heading */
+            text-shadow: 3px 3px 0 var(--accent-blue), 6px 6px 0 var(--accent-pink);
         }
-        .table {
-            background-color: #2c2f33;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .table th,
-        .table td {
-            vertical-align: middle;
-        }
-        .table th {
-            background-color: #3a3f44;
-            color: #ddd;
+
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--text-main);
+            max-width: 650px;
+            margin: 0 auto;
             font-weight: 500;
         }
-        .table tbody tr {
-            transition: background-color 0.3s ease;
-        }
-        .table tbody tr:nth-of-type(odd) {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        .table tbody tr:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        .icon {
-            margin-right: 5px;
-        }
-        a {
-            color: #00bcd4;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #fff;
-        }
-		.table-container {
-			text-align: center;
-		}
 
-		.table-container table {
-			margin: 0 auto; /* This centers the table horizontally */
-		}
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Adjust minmax */
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .tool-card {
+            background: var(--bg-main); /* Match page bg */
+            border-radius: var(--base-border-radius);
+            padding: 1.8rem;
+            border: var(--border-thickness) solid var(--border-main);
+            box-shadow: var(--base-shadow);
+            transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+             opacity: 1; /* Ensure visible */
+             animation: none; /* Remove fade */
+        }
+
+        .tool-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: calc(var(--shadow-offset) + 3px) calc(var(--shadow-offset) + 3px) 0 var(--shadow-color);
+        }
+
+        .tool-name {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+        }
+         .tool-name::after { /* Remove underline effect */
+             content: none;
+         }
+
+        .tool-description {
+            color: var(--text-main); /* Use main text color */
+            opacity: 0.9; /* Slightly less emphasis */
+            margin-bottom: 1.5rem;
+            min-height: auto; /* Remove fixed height */
+            font-size: 1rem;
+        }
+
+        .tool-meta {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on small cards */
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem; /* Add gap for spacing */
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: var(--border-thickness) dashed var(--border-main); /* Dashed border */
+        }
+
+        .file-type {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--interactive-border-radius);
+            border: var(--border-thickness) solid var(--border-main);
+            box-shadow: 2px 2px 0 var(--shadow-color);
+            color: var(--text-main);
+            background-color: var(--accent-yellow); /* Default Yellow */
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+        /* Specific colors */
+        .file-type.php { background-color: var(--accent-purple); color: white; }
+        .file-type.html { background-color: var(--accent-orange); }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.5rem;
+            background: var(--accent-green); /* Solid accent color */
+            color: var(--text-main);
+            border-radius: var(--interactive-border-radius);
+            border: var(--border-thickness) solid var(--border-main);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: var(--transition-fast);
+            box-shadow: var(--base-shadow);
+            cursor: pointer;
+             margin-left: auto; /* Push to right if space allows */
+             flex-shrink: 0;
+        }
+
+        .download-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--shadow-color);
+            background-color: var(--accent-blue); /* Change color on hover */
+        }
+
+        /* Social & Partners */
+        .social-partners {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .footer-box {
+            background: var(--bg-main);
+            border-radius: var(--base-border-radius);
+            padding: 2rem;
+            border: var(--border-thickness) solid var(--border-main);
+            box-shadow: var(--base-shadow);
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.4rem; /* Larger title */
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-title i {
+            color: var(--text-main); /* Icon same color as text */
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.2rem;
+            background: var(--accent-pink); /* Solid accent color */
+            border-radius: var(--interactive-border-radius);
+            margin-right: 0.8rem;
+            margin-bottom: 0.8rem;
+            transition: var(--transition-fast);
+            color: var(--text-main);
+            text-decoration: none;
+            border: var(--border-thickness) solid var(--border-main);
+            box-shadow: var(--base-shadow);
+            font-weight: 700;
+        }
+
+        .social-link:hover {
+            background: var(--accent-yellow);
+            transform: translate(-2px, -2px);
+            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--shadow-color);
+        }
+
+        .partner-tag {
+            display: inline-block; /* Make block for link behavior */
+            padding: 0.6rem 1.2rem;
+            background: var(--accent-orange); /* Solid accent color */
+            border-radius: var(--interactive-border-radius);
+            margin-right: 0.8rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            transition: var(--transition-fast);
+            border: var(--border-thickness) solid var(--border-main);
+            box-shadow: var(--base-shadow);
+            color: var(--text-main); /* Ensure link text is visible */
+            text-decoration: none; /* Remove default underline */
+        }
+
+        .partner-tag:hover {
+            background: var(--accent-purple);
+            color: white; /* Ensure contrast on purple */
+            transform: translate(-2px, -2px);
+            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--shadow-color);
+        }
+
+        /* Ad containers */
+        .ad-container {
+            margin: 3rem auto;
+            text-align: center;
+            background: var(--bg-main);
+            border-radius: var(--base-border-radius);
+            padding: 1.5rem;
+            border: var(--border-thickness) dashed var(--border-main); /* Dashed for ads */
+            box-shadow: var(--base-shadow);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: clamp(2.2rem, 8vw, 3rem);
+                text-shadow: 2px 2px 0 var(--accent-blue), 4px 4px 0 var(--accent-pink);
+            }
+            body { padding: 1rem 0.5rem; }
+            .container { padding: 0; }
+             header, .footer-box, .tool-card, .ad-container {
+                 /* Reduce shadow/border slightly on mobile */
+                --shadow-offset: 3px;
+                --border-thickness: 2px;
+                padding: 1.5rem;
+             }
+            .tools-grid { grid-template-columns: 1fr; gap: 1.5rem;}
+            .social-partners { gap: 1.5rem; margin: 2.5rem 0;}
+            .tool-meta { flex-direction: column; align-items: flex-start;}
+            .download-btn { margin-left: 0; width: 100%; justify-content: center;}
+        }
+         @media (max-width: 480px) {
+             .tool-name { font-size: 1.3rem; }
+         }
+
     </style>
-    
-    <script type="text/javascript">
-    if (top !== self) {
-        top.location.replace(self.location.href);
-    }
-    </script>
 </head>
 <body>
-    <div class="container table-container">
-        <h1>Private Tools Collection</h1>
-		<script type="text/javascript">
-			atOptions = {
-				'key' : '280a52c92a8b8c510fdf9e00e4e25a3f',
-				'format' : 'iframe',
-				'height' : 50,
-				'width' : 320,
-				'params' : {}
-			};
-		</script>
-		<script type="text/javascript" src="//www.topcreativeformat.com/280a52c92a8b8c510fdf9e00e4e25a3f/invoke.js"></script>
-        <div class="table-responsive">
-            <table class="table table-dark table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">File Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col"><i class="fas fa-download"></i> Download Link</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>adminer-4.8.1.php</td>
-                        <td>Database management tool</td>
-                        <td><a href="https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php"><i class="fas fa-download icon"></i> Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>testmail.php</td>
-                        <td>Simple WebTester [Test mail(), SSL, and Deceptive]</td>
-                        <td><a href="https://yvenone.github.io/php/testmail.php"><i class="fas fa-download icon"></i> Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>redirect.html</td>
-                        <td>HTML Redirector</td>
-                        <td><a href="https://raw.githubusercontent.com/yvenone/yvenone.github.io/main/html/redirect.html"><i class="fas fa-download icon"></i> Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>tinyfilemanager.php</td>
-                        <td>Simple PHP File Manager</td>
-                        <td><a href="https://raw.githubusercontent.com/yvenone/yvenone.github.io/main/php/tinyfilemanager.php"><i class="fas fa-download icon"></i> Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>dbemailextract.php</td>
-                        <td>Simple Email Extractor from Database</td>
-                        <td><a href="https://raw.githubusercontent.com/yvenone/yvenone.github.io/main/php/dbemailextractor.php"><i class="fas fa-download icon"></i> Download</a></td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- No background shapes needed for this style -->
+
+    <div class="container">
+        <header>
+            <h1>TOOL<span style="color: var(--accent-pink)">HUB</span></h1>
+            <p class="subtitle">
+                Hard-hitting developer utilities. No fluff, just function. Built tough.
+            </p>
+        </header>
+
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'ebb4c1e1a2109508a8a49f805a1749c5',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.topcreativeformat.com/ebb4c1e1a2109508a8a49f805a1749c5/invoke.js"></script>
         </div>
-		<br>
-		<script type="text/javascript">
-			atOptions = {
-				'key' : 'ebb4c1e1a2109508a8a49f805a1749c5',
-				'format' : 'iframe',
-				'height' : 90,
-				'width' : 728,
-				'params' : {}
-			};
-		</script>
-		<script type="text/javascript" src="//www.topcreativeformat.com/ebb4c1e1a2109508a8a49f805a1749c5/invoke.js"></script>
+
+        <!-- Tools Grid -->
+        <div class="tools-grid">
+            <!-- Tool Card 1 -->
+            <div class="tool-card">
+                <h2 class="tool-name">Adminer</h2>
+                <p class="tool-description">
+                    Database management in a single PHP file. The real deal alternative to bloated tools.
+                </p>
+                <div class="tool-meta">
+                    <span class="file-type php">PHP</span>
+                    <a href="https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php" class="download-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tool Card 2 -->
+            <div class="tool-card">
+                <h2 class="tool-name">WebTester</h2>
+                <p class="tool-description">
+                    PHP script: Test mail(), SSL, deceptive setups. Know your server.
+                </p>
+                <div class="tool-meta">
+                    <span class="file-type php">PHP</span>
+                    <a href="https://yvenone.github.io/php/testmail.php" class="download-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tool Card 3 -->
+            <div class="tool-card">
+                <h2 class="tool-name">Redirector</h2>
+                <p class="tool-description">
+                    Basic HTML redirect. Meta refresh + JS fallback. Dead simple.
+                </p>
+                <div class="tool-meta">
+                    <span class="file-type html">HTML</span>
+                    <a href="https://raw.githubusercontent.com/yvenone/yvenone.github.io/main/html/redirect.html" class="download-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tool Card 4 -->
+            <div class="tool-card">
+                <h2 class="tool-name">File Manager</h2>
+                <p class="tool-description">
+                    Single-file PHP file management. Edit, upload, manage. Fast.
+                </p>
+                <div class="tool-meta">
+                    <span class="file-type php">PHP</span>
+                    <a href="https://raw.githubusercontent.com/yvenone/yvenone.github.io/main/php/tinyfilemanager.php" class="download-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tool Card 5 -->
+            <div class="tool-card">
+                <h2 class="tool-name">Email Extractor</h2>
+                <p class="tool-description">
+                    Rip email addresses from database tables. Simple PHP script.
+                </p>
+                <div class="tool-meta">
+                    <span class="file-type php">PHP</span>
+                    <a href="https://raw.githubusercontent.com/yvenone/yvenone.github.io/main/php/dbemailextractor.php" class="download-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social & Partners -->
+        <div class="social-partners">
+            <div class="footer-box social-box">
+                <h3 class="section-title">
+                    <i class="fas fa-share-alt"></i> Connect
+                </h3>
+                <a href="https://github.com/yvenone" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                 <!-- Add other social links here if needed -->
+            </div>
+
+            <div class="footer-box partners-box">
+                <h3 class="section-title">
+                    <i class="fas fa-handshake"></i> Partners
+                </h3>
+                 <!-- Added Links to Partners -->
+                <a href="https://facebook.com" class="partner-tag" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a href="https://google.com" class="partner-tag" target="_blank" rel="noopener noreferrer">Google</a>
+                <a href="https://reddit.com" class="partner-tag" target="_blank" rel="noopener noreferrer">Reddit</a>
+                <a href="https://github.com" class="partner-tag" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+        </div>
+
+        <!-- Ad Containers -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '280a52c92a8b8c510fdf9e00e4e25a3f',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.topcreativeformat.com/280a52c92a8b8c510fdf9e00e4e25a3f/invoke.js"></script>
+        </div>
     </div>
-    
-    <!-- Bootstrap 5 JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-5tcDS1Ry5f+f1z16RdQntVg5D1KYsOCXf00pIzZ2xOgICokNB5a3LOJKqZZjGbS4" crossorigin="anonymous"></script>
+
+    <script>
+        // Anti-framing script
+        if (top !== self) {
+            top.location.replace(self.location.href);
+        }
+
+        // No complex JS needed for entry animations in this style
+        // CSS transitions handle hover effects
+    </script>
 </body>
 </html>
